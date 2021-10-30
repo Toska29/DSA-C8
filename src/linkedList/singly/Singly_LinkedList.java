@@ -36,6 +36,31 @@ public class Singly_LinkedList {
         newNode.next = temp;
     }
 
+    public void removeFromEnd(){
+        Node<String> current = head;
+        while(current.next.next != null){
+            current = current.next;
+        }
+        current.next= null;
+    }
+
+    public void removeFromHead(){
+        Node<String> current = head;
+        head = current.next;
+    }
+
+    public void removeFromPosition(int position){
+        int counter = 1;
+        Node<String> current = head;
+
+        while (counter!=position-1){
+            current = current.next;
+            counter++;
+        }
+
+        current.next = current.next.next;
+    }
+
 
     public void printList(){
         Node<String> current = head;
@@ -59,6 +84,12 @@ class MainTest{
         list.addToHead(new Node<>("Israel"));
         list.printList();
         list.addToMiddle(new Node<>("Teslim"), 2);
+        list.printList();
+        list.removeFromEnd();
+        list.printList();
+        list.removeFromHead();
+        list.printList();
+        list.removeFromPosition(2);
         list.printList();
     }
 }
